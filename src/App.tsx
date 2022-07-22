@@ -4,7 +4,11 @@ import './App.css';
 // import {Footer} from "./site/Footer";
 // import {NewComponentMap} from "./map/NewComponentMap";
 // import {NewButton} from "./button/NewButton";
-import {HookUseState} from "./hook/HookUseState";
+// import {HookUseState} from "./hook/HookUseState";
+import {NewComponentFilter} from "./filter/NewComponentFilter";
+import {useState} from "react";
+
+type FilterType = 'all' | 'Dollars' | 'RUBLS'
 
 function App() {
     // const students = [
@@ -42,6 +46,32 @@ function App() {
     // const Button3Foo = () => {
     //     console.log("I am stupid button")
     // }
+    const [money, setMoney] = useState([
+        {banknotes: 'Dollars', value: 100, number: ' a1234567890'},
+        {banknotes: 'Dollars', value: 50, number: ' z1234567890'},
+        {banknotes: 'RUBLS', value: 100, number: ' w1234567890'},
+        {banknotes: 'Dollars', value: 100, number: ' e1234567890'},
+        {banknotes: 'Dollars', value: 50, number: ' c1234567890'},
+        {banknotes: 'RUBLS', value: 100, number: ' r1234567890'},
+        {banknotes: 'Dollars', value: 50, number: ' x1234567890'},
+        {banknotes: 'RUBLS', value: 50, number: ' v1234567890'},
+    ])
+
+    const [filter, setFilter] = useState<FilterType>('all')
+
+    let currentMoney = money;
+
+    if (filter === "Dollars") {
+        currentMoney = money.filter(el => el.banknotes === "Dollars")
+    }
+    if (filter === "RUBLS") {
+        currentMoney = money.filter(el => el.banknotes === "RUBLS")
+    }
+
+    const onClickFilterHandler = (buttonName: FilterType) => {
+        setFilter(buttonName)
+    }
+
     return (
         <>
             {/*<Header title={'NEW TITLE'}/>*/}
@@ -51,7 +81,8 @@ function App() {
             {/*<NewButton name={'MyYouTubeChannel-1'} callback={()=>Button1Foo('I am Vasya!', 21)}/>*/}
             {/*<NewButton name={'MyYouTubeChannel-2'} callback={()=>Button1Foo('I am Ivan!', 35)}/>*/}
             {/*<NewButton name={'MyYouTubeChannel-3'} callback={Button3Foo}/>*/}
-            <HookUseState/>
+            {/*<HookUseState/>*/}
+            <NewComponentFilter currentMoney = {currentMoney} onClickFilterHandler={onClickFilterHandler}/>
         </>
 
     );
