@@ -20,6 +20,5 @@ export const NewButton = (props: NewButtonType) => {
             {/*<button onClick={(event:MouseEvent<HTMLButtonElement>)=>{onClickHandler('Ivan')}}>*/}
             {/*</button>*/}
         </>
-
     )
 }

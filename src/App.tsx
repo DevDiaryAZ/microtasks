@@ -3,7 +3,8 @@ import './App.css';
 // import {Body} from "./site/Body";
 // import {Footer} from "./site/Footer";
 // import {NewComponentMap} from "./map/NewComponentMap";
-import {NewButton} from "./button/NewButton";
+// import {NewButton} from "./button/NewButton";
+import {HookUseState} from "./hook/HookUseState";
 
 function App() {
     // const students = [
@@ -35,21 +36,22 @@ function App() {
     //     {manufacturer:'Mercedes', model:'e63s'},
     //     {manufacturer:'Audi', model:'rs6'}
     // ]
-    const Button1Foo = (subscriber: string, age: number) => {
-        console.log(subscriber + ' age: ' + age)
-    }
-    const Button3Foo = () => {
-        console.log("I am stupid button")
-    }
+    // const Button1Foo = (subscriber: string, age: number) => {
+    //     console.log(subscriber + ' age: ' + age)
+    // }
+    // const Button3Foo = () => {
+    //     console.log("I am stupid button")
+    // }
     return (
         <>
             {/*<Header title={'NEW TITLE'}/>*/}
             {/*<Body titleForBody={'NEW BODY'}/>*/}
             {/*<Footer titleForFooter={'NEW FOOTER'}/>*/}
             {/*<NewComponentMap students={students} topCars={topCars}/>*/}
-            <NewButton name={'MyYouTubeChannel-1'} callback={()=>Button1Foo('I am Vasya!', 21)}/>
-            <NewButton name={'MyYouTubeChannel-2'} callback={()=>Button1Foo('I am Ivan!', 35)}/>
-            <NewButton name={'MyYouTubeChannel-3'} callback={Button3Foo}/>
+            {/*<NewButton name={'MyYouTubeChannel-1'} callback={()=>Button1Foo('I am Vasya!', 21)}/>*/}
+            {/*<NewButton name={'MyYouTubeChannel-2'} callback={()=>Button1Foo('I am Ivan!', 35)}/>*/}
+            {/*<NewButton name={'MyYouTubeChannel-3'} callback={Button3Foo}/>*/}
+            <HookUseState/>
         </>
 
     );
