@@ -5,12 +5,17 @@ import './App.css';
 // import {NewComponentMap} from "./map/NewComponentMap";
 // import {NewButton} from "./button/NewButton";
 // import {HookUseState} from "./hook/HookUseState";
-import {NewComponentFilter} from "./filter/NewComponentFilter";
+// import {NewComponentFilter} from "./filter/NewComponentFilter";
 import {useState} from "react";
+import {NewInput} from "./input/NewInput";
 
-type FilterType = 'all' | 'Dollars' | 'RUBLS'
+// type FilterType = 'all' | 'Dollars' | 'RUBLS'
+export type MessageType = {
+    message: string
+}
 
 function App() {
+    // ---***--- for NewComponentMap ---***---
     // const students = [
     //     {id: 1, name: "James", age: 8},
     //     {id: 2, name: "Robert", age: 18},
@@ -40,37 +45,59 @@ function App() {
     //     {manufacturer:'Mercedes', model:'e63s'},
     //     {manufacturer:'Audi', model:'rs6'}
     // ]
+    // ---***--- end for NewComponentMap ---***---
+
+    // ---***--- for NewButton ---***---
     // const Button1Foo = (subscriber: string, age: number) => {
     //     console.log(subscriber + ' age: ' + age)
     // }
     // const Button3Foo = () => {
     //     console.log("I am stupid button")
     // }
-    const [money, setMoney] = useState([
-        {banknotes: 'Dollars', value: 100, number: ' a1234567890'},
-        {banknotes: 'Dollars', value: 50, number: ' z1234567890'},
-        {banknotes: 'RUBLS', value: 100, number: ' w1234567890'},
-        {banknotes: 'Dollars', value: 100, number: ' e1234567890'},
-        {banknotes: 'Dollars', value: 50, number: ' c1234567890'},
-        {banknotes: 'RUBLS', value: 100, number: ' r1234567890'},
-        {banknotes: 'Dollars', value: 50, number: ' x1234567890'},
-        {banknotes: 'RUBLS', value: 50, number: ' v1234567890'},
-    ])
+    // ---***--- end for NewButton ---***---
 
-    const [filter, setFilter] = useState<FilterType>('all')
+    // ---***--- for NewComponentFilter ---***---
+    // const [money, setMoney] = useState([
+    //     {banknotes: 'Dollars', value: 100, number: ' a1234567890'},
+    //     {banknotes: 'Dollars', value: 50, number: ' z1234567890'},
+    //     {banknotes: 'RUBLS', value: 100, number: ' w1234567890'},
+    //     {banknotes: 'Dollars', value: 100, number: ' e1234567890'},
+    //     {banknotes: 'Dollars', value: 50, number: ' c1234567890'},
+    //     {banknotes: 'RUBLS', value: 100, number: ' r1234567890'},
+    //     {banknotes: 'Dollars', value: 50, number: ' x1234567890'},
+    //     {banknotes: 'RUBLS', value: 50, number: ' v1234567890'},
+    // ])
+    //
+    // const [filter, setFilter] = useState<FilterType>('all')
+    //
+    // let currentMoney = money;
+    //
+    // if (filter === "Dollars") {
+    //     currentMoney = money.filter(el => el.banknotes === "Dollars")
+    // }
+    // if (filter === "RUBLS") {
+    //     currentMoney = money.filter(el => el.banknotes === "RUBLS")
+    // }
+    //
+    // const onClickFilterHandler = (buttonName: FilterType) => {
+    //     setFilter(buttonName)
+    // }
+    // ---***--- end for NewComponentFilter ---***---
 
-    let currentMoney = money;
+    // ---***--- for NewInput ---***---
+    const [message, setMessage] = useState<MessageType[]>([
+            {message: 'message1'},
+            {message: 'message2'},
+            {message: 'message3'},
+            {message: 'message4'},
+            {message: 'message5'}
+        ]
+    )
 
-    if (filter === "Dollars") {
-        currentMoney = money.filter(el => el.banknotes === "Dollars")
+    const addMessage = (newMessage: MessageType) => {
+        setMessage([newMessage,...message])
     }
-    if (filter === "RUBLS") {
-        currentMoney = money.filter(el => el.banknotes === "RUBLS")
-    }
-
-    const onClickFilterHandler = (buttonName: FilterType) => {
-        setFilter(buttonName)
-    }
+    // ---***--- end for NewInput ---***---
 
     return (
         <>
@@ -82,7 +109,8 @@ function App() {
             {/*<NewButton name={'MyYouTubeChannel-2'} callback={()=>Button1Foo('I am Ivan!', 35)}/>*/}
             {/*<NewButton name={'MyYouTubeChannel-3'} callback={Button3Foo}/>*/}
             {/*<HookUseState/>*/}
-            <NewComponentFilter currentMoney = {currentMoney} onClickFilterHandler={onClickFilterHandler}/>
+            {/*<NewComponentFilter currentMoney = {currentMoney} onClickFilterHandler={onClickFilterHandler}/> */}
+            <NewInput message={message} addMessage={addMessage}/>
         </>
 
     );
